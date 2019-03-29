@@ -1,1 +1,1 @@
-console.log("test");
+import AppComp from './app-comp/app-comp';
