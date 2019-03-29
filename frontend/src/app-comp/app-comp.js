@@ -25,7 +25,7 @@ export default class AppComp extends HTMLElement {
 	}
 
 	addFunctionality() {
-		const lis = this.root.querySelectorAll("li");
+		const lis = this.root.querySelectorAll(".menu");
 		lis.forEach(elem => {
 			elem.onclick = _ => this.fireCustomEvent(elem.innerText);
 		})
