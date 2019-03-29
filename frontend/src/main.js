@@ -1,2 +1,2 @@
 import AppComp from './app-comp/app-comp';
-import AppRouter from './app-router/app-router';
+import RouterComp from './router-comp/router-comp';

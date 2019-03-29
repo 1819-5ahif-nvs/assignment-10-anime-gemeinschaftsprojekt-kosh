@@ -1,4 +1,4 @@
-export default class AppRouter extends HTMLElement {
+export default class RouterComp extends HTMLElement {
 	constructor() {
 		super();
 
@@ -7,7 +7,6 @@ export default class AppRouter extends HTMLElement {
 
 	connectedCallback() {
 		this.appendHTML();
-		this.heading();
 
 		document.addEventListener("router", evt => {
 			console.log("catched evt");
@@ -32,4 +31,4 @@ export default class AppRouter extends HTMLElement {
 	}
 }
 
-customElements.define("app-comp", AppRouter);
+customElements.define("router-comp", RouterComp);

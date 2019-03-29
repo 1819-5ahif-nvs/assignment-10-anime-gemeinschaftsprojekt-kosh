@@ -10,7 +10,6 @@ export default class AppComp extends HTMLElement {
 
 	connectedCallback() {
 		this.appendHTML();
-		this.heading();
 	}
 
 	appendHTML() {
