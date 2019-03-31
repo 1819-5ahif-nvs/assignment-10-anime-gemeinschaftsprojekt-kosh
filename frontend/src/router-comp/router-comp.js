@@ -22,8 +22,6 @@ export default class RouterComp extends HTMLElement {
 		let style = document.createElement("style");
 		style.innerText = `
 		#body {
-			width: 100%;
-			height: 100%;
 		}
 		`;
 		this.root.append(style);
