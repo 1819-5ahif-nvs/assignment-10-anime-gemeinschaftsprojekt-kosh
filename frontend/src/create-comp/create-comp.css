@@ -25,6 +25,12 @@
 	font-size: 15px;
 }
 
+input[type=date] {
+	color: #707070;
+	font-family: Roboto;
+	padding-left: 50px;
+}
+
 #titlediv {
 	width: 100%;
 	height: 100%;
