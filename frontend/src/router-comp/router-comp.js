@@ -14,7 +14,7 @@ export default class RouterComp extends HTMLElement {
 	}
 
 	appendHTML() {
-		this.root.innerHTML = "<div id='body'></div>";
+		this.root.innerHTML = "<div id='body'><create-comp></create-comp></div>";
 		this.appendCSS();
 	}
 
