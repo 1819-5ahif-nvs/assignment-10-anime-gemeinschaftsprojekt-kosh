@@ -1,13 +1,13 @@
 package entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
 @Entity
+@NamedQueries({
+        @NamedQuery(name="Anime.getAllAnimes", query = "select a from Anime a")
+})
 public class Anime implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
