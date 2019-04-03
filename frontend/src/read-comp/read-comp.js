@@ -16,6 +16,7 @@ export default class ReadComp extends HTMLElement {
 	appendHTML() {
 		this.root.innerHTML = html;
 		this.appendCSS();
+		this.getAllEpisodes();
 	}
 
 	appendCSS() {
@@ -25,6 +26,13 @@ export default class ReadComp extends HTMLElement {
 	}
 
 	addFunctionality() {
+	}
+
+	getAllEpisodes() {
+		const elem = this.root.querySelector("#readAll");
+		for(let i = 0; i < 100; i++) {
+			elem.innerHTML += "<data-comp></data-comp>"
+		}
 	}
 }
 
