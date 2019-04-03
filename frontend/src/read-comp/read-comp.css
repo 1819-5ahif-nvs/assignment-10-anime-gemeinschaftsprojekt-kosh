@@ -1,0 +1,29 @@
+#body {
+	width: 100%;
+	height: calc(100% - 200px);
+
+	display: grid;
+	grid-template-columns: 150px auto;
+	grid-template-rows: 100px auto;
+}
+
+.text {
+	text-align: right;
+}
+
+#readById {
+	justify-items: left;
+	padding-left: 15px;
+}
+
+.inputfield {
+	outline: none;
+	border: none;
+	border-bottom: solid 1.5px #707070;
+	width: 200px;
+	height: 40px;
+	margin: 5px 0;
+	text-align: center;
+	font-size: 15px;
+	background: white;
+}
