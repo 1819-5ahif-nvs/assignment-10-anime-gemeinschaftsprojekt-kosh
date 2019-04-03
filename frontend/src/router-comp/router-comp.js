@@ -9,7 +9,19 @@ export default class RouterComp extends HTMLElement {
 		this.appendHTML();
 
 		document.addEventListener("router", evt => {
-			console.log("catched evt");
+			const menu = evt.detail.menu;
+			if(menu == "CREATE") {
+				this.root.innerHTML = "<create-comp></create-comp>";
+			}
+			else if(menu == "READ") {
+				this.root.innerHTML = "<read-comp></read-comp>";
+			}
+			else if(menu == "UPDATE") {
+				this.root.innerHTML = "<update-comp></update-comp>";
+			}
+			else if(menu == "DELETE") {
+				this.root.innerHTML = "<delete-comp></delete-comp>";
+			}
 		});
 	}
 
