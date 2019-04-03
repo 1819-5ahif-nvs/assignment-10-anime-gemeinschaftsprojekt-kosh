@@ -1,20 +1,86 @@
 import business.AnimeFacade;
+
 import entities.Anime;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.HttpClientBuilder;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
 import javax.inject.Inject;
+import javax.json.JsonObject;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import java.util.Locale;
 
 @Singleton
 @Startup
 public class InitBean {
     @Inject
     private AnimeFacade animeFacade;
+    private final String USER_AGENT = "Mozilla/5.0";
 
     @PostConstruct
-    public void init(){
-        animeFacade.save(new Anime("test",new Date(),new Date(),"url1","url2"));
+    public void init() {
+        List<Anime> list = null;
+        try {
+            list = fetchAnimes("https://api.jikan.moe/v3/anime/1/episodes/1"); //url for REST Endpoint
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        for (Anime anime : list) { //persist all Animes
+            animeFacade.save(anime);
+        }
     }
+
+    public List<Anime> fetchAnimes(String url) throws IOException, ParseException {
+        HttpClient client = HttpClientBuilder.create().build();
+        HttpGet request = new HttpGet(url);
+        request.addHeader("User-Agent", USER_AGENT);
+        HttpResponse response;
+
+        response = client.execute(request);
+
+        BufferedReader rd = new BufferedReader(
+                new InputStreamReader(response.getEntity().getContent()));
+
+        StringBuilder result = new StringBuilder();
+        String line;
+        while ((line = rd.readLine()) != null) {
+            result.append(line);
+        }
+
+        //read every episode and persist as Anime
+        JSONObject jsonObj = new JSONObject(result.toString());
+        JSONArray jsonArr = jsonObj.getJSONArray("episodes");
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        List<Anime> animeList = new ArrayList<>();
+
+        String dateFrom;
+        String dateTo = "";
+        JSONObject date;
+        for (int i = 0; i < jsonArr.length(); i++) {
+            jsonObj = jsonArr.getJSONObject(i);
+            date = jsonObj.getJSONObject("aired"); //extra json object in json structure
+            animeList.add(new Anime(jsonObj.getString("title"), sdf.parse(date.optString("from","00-01-01T").split("T")[0]), sdf.parse(date.optString("to","00-01-01T").split("T")[0]), jsonObj.getString("video_url"), jsonObj.getString("forum_url"))); //if date from or to is null, set default date
+        }
+
+        return animeList;
+    }
+
 }
