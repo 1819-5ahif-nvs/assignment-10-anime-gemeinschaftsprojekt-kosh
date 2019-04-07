@@ -8,6 +8,30 @@ export default class DataComp extends HTMLElement {
 		this.root = this.attachShadow({mode: "closed"})
 	}
 
+	get episodeId() {
+		return this.getAttribute("episodeid");
+	}
+
+	get title() {
+		return this.getAttribute("title");
+	}
+	
+	get airedFrom() {
+		return this.getAttribute("airedfrom");
+	}
+
+	get airedto() {
+		return this.getAttribute("airedto");
+	}
+
+	get videourl() {
+		return this.getAttribute("videourl");
+	}
+
+	get forumurl() {
+		return this.getAttribute("forumurl");
+	}
+
 	connectedCallback() {
 		this.appendHTML();
 		this.addFunctionality();
@@ -25,6 +49,7 @@ export default class DataComp extends HTMLElement {
 	}
 
 	addFunctionality() {
+		console.log(this.videourl);
 	}
 }
 

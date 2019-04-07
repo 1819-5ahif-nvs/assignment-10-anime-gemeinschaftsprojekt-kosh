@@ -31,7 +31,17 @@ export default class ReadComp extends HTMLElement {
 
 	async getAllEpisodes() {
 		const data = await (new FetchWorker()).readAll();
-		console.log(data.length);
+
+		data.forEach(elem => {
+			const tag = document.createElement("data-comp");
+			tag.setAttribute("episodeid", elem.episodeId);
+			tag.setAttribute("title", elem.title);
+			tag.setAttribute("airedfrom", elem.airedFrom);
+			tag.setAttribute("airedto", elem.airedTo);
+			tag.setAttribute("forumurl", elem.forumURL);
+			tag.setAttribute("videourl", elem.videoURL);
+			this.root.querySelector("#readAll").appendChild(tag);
+		});
 	}
 }
 
