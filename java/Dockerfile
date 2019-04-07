@@ -1,7 +1,6 @@
-# WildFly 8 on Docker with Centos 7 and OpenJDK 1.7
 FROM jboss/wildfly:11.0.0.Final
 
-# Appserver
+# Applicationserver
 ENV WILDFLY_USER admin
 ENV WILDFLY_PASS passme
 
@@ -11,11 +10,9 @@ ENV DB_NAME anime
 ENV DB_USER mariadb
 ENV DB_PASS mariadb
 ENV DB_URI maria_db:3306
-
 ENV MYSQL_VERSION 6.0.6
 ENV JBOSS_CLI /opt/jboss/wildfly/bin/jboss-cli.sh
 ENV DEPLOYMENT_DIR /opt/jboss/wildfly/standalone/deployments/
-#ENV JAVA_OPTS
 
 # Setting up WildFly Admin Console
 RUN echo "=> Adding WildFly administrator"
@@ -38,7 +35,6 @@ RUN echo "=> Starting WildFly server" && \
     echo "=> Adding MySQL module" && \
       $JBOSS_CLI --connect --command="module add --name=com.mysql --resources=/tmp/mysql-connector-java-${MYSQL_VERSION}.jar --dependencies=javax.api,javax.transaction.api" && \
     echo "=> Adding MySQL driver" && \
-                                     #/subsystem=datasources/jdbc-driver=mysql:add(driver-name=mysql,driver-module-name=com.mysql.driver,driver-class-name=com.mysql.cj.jdbc.Driver)
       $JBOSS_CLI --connect --command="/subsystem=datasources/jdbc-driver=mysql:add(driver-name=mysql,driver-module-name=com.mysql,driver-class-name=com.mysql.cj.jdbc.Driver)" && \
     echo "=> Creating a new datasource" && \
       $JBOSS_CLI --connect --command="data-source add \
@@ -60,7 +56,5 @@ RUN echo "=> Starting WildFly server" && \
 # Expose http and admin ports
 EXPOSE 8080 9990
 
-# echo "=> Restarting WildFly"
-# Set the default command to run on boot
-# This will boot WildFly in the standalone mode and bind to all interfaces
+# Execute the script that waits for the database-connection and starts the server
 CMD ["/data/wait.sh"]
