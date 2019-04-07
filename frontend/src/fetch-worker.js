@@ -3,8 +3,18 @@ export default class FetchWorker {
 		this.baseurl = "http://localhost:8080/anime/rs/anime";
 	}
 
-	create(data) {
+	async create(data) {
+		const resp = await fetch(this.baseurl, {
+			method: "POST",
+			body: JSON.stringify(data),
+			headers: {
+				'Content-Type': 'application/json'
+			}
+		});
 
+		console.log(JSON.stringify(data));
+
+		return resp.status;
 	}
 
 	async readAll() {
