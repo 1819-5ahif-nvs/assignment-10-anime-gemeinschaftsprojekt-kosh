@@ -32,7 +32,12 @@ export default class FetchWorker {
 		return resp.status;
 	}
 
-	delete(data) {
+	async delete(data) {
+		const resp = await fetch(this.baseurl + "/" + data, {
+			method: "DELETE",
+			mode: "cors"
+		});
 
+		return resp.status;
 	}
 }
