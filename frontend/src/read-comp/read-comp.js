@@ -1,5 +1,6 @@
 import html from './read-comp.html';
 import css from './read-comp.css';
+import FetchWorker from './../fetch-worker';
 
 export default class ReadComp extends HTMLElement {
 	constructor() {
@@ -28,11 +29,9 @@ export default class ReadComp extends HTMLElement {
 	addFunctionality() {
 	}
 
-	getAllEpisodes() {
-		const elem = this.root.querySelector("#readAll");
-		for(let i = 0; i < 100; i++) {
-			elem.innerHTML += "<data-comp></data-comp>"
-		}
+	async getAllEpisodes() {
+		const data = await (new FetchWorker()).readAll();
+		console.log(data.length);
 	}
 }
 
