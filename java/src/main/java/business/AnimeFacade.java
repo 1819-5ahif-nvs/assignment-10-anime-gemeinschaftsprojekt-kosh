@@ -36,7 +36,9 @@ public class AnimeFacade {
             return null;
         }
     }
-    public void delete(Anime anime){
-        em.remove(anime);
+    public void delete(Long episodeid){
+        em.createNamedQuery("Anime.deleteAnimeById")
+                .setParameter("episodeId", episodeid)
+                .executeUpdate();
     }
 }
