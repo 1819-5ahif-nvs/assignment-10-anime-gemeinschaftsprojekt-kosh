@@ -10,7 +10,7 @@ export default class UpdateComp extends HTMLElement {
 
 	connectedCallback() {
 		this.appendHTML();
-		this.addFunctionality();
+		//this.addFunctionality();
 	}
 
 	appendHTML() {
@@ -25,6 +25,29 @@ export default class UpdateComp extends HTMLElement {
 	}
 
 	addFunctionality() {
+		this.elem("#button").onclick = _ => {
+			let elem = {};
+			elem.episodeid = this.choosen.id
+			elem.title = this.elem("#title").value;
+			elem.airedFrom = this.elem("#airedfrom").value;
+			elem.airedTo = this.elem("#airedto").value;
+			elem.videoURL = this.elem("#video").value;
+			elem.forumURL = this.elem("#forum").value;
+
+			console.log(elem);
+			(new FetchWorker()).create(elem);
+		};
+
+		this.elem("#airedFrom").onfocus = evt => this.onDateFocus(evt);
+		this.elem("#airedTo").onfocus = evt => this.onDateFocus(evt);
+	}
+
+	onDateFocus(evt) {
+		evt.srcElement.setAttribute("type", "date");
+	}
+
+	elem(str) {
+		return this.root.querySelector(str);
 	}
 }
 
