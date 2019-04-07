@@ -121,3 +121,5 @@ hs_err_pid*
 
 # End of https://www.gitignore.io/api/java,database,intellij
 frontend/node_modules/
+
+java/\.idea/
