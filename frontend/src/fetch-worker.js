@@ -21,6 +21,8 @@ export default class FetchWorker {
 	}
 
 	async update(data) {
+		console.log(JSON.stringify(data));
+
 		const resp = await fetch(this.baseurl, {
 			method: "PUT",
 			body: JSON.stringify(data),

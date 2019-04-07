@@ -108,14 +108,14 @@ export default class UpdateComp extends HTMLElement {
 	addFunctionality() {
 		this.elem("#button").onclick = _ => {
 			let elem = {};
-			elem.episodeid = this.choosen.id
+			elem.episodeId = this.current.episodeId
 			elem.title = this.elem("#title").value;
 			elem.airedFrom = this.elem("#airedfrom").value;
 			elem.airedTo = this.elem("#airedto").value;
 			elem.videoURL = this.elem("#video").value;
 			elem.forumURL = this.elem("#forum").value;
 			
-			(new FetchWorker()).create(elem);
+			this.worker.update(elem);
 		};
 
 		this.elem("#episodes").onchange = _ => {
