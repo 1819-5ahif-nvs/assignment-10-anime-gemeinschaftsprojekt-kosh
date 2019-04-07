@@ -54,6 +54,12 @@ export default class DataComp extends HTMLElement {
 		this.appendHTML();
 
 		this.root.querySelector("#episodeid").innerText = this.episodeid;
+
+		if(this.episodeid === "-1") {
+			this.root.querySelector("#body").style.visibility = "hidden";
+			return;
+		}
+
 		this.root.querySelector("#title").innerText = this.title;
 		this.root.querySelector("#airedfrom").innerText = this.airedfrom;
 		this.root.querySelector("#airedto").innerText = this.airedto;
