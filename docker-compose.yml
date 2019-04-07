@@ -26,7 +26,3 @@ services:
       - 9990:9990
     depends_on:
       - mysql
-
-networks:
-  default:
-    driver: bridge
