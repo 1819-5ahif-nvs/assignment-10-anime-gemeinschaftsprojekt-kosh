@@ -1,38 +1,28 @@
-version: "2"
+version: '3'
 
 services:
-  app:
-    container_name: "wildfly_backend"
-    image: "jboss/wildfly"
+  mysql:
+    container_name: "maria_db"
+    image: "mariadb:latest"
     environment:
-      - WILDFLY_USER=admin
-      - WILDFLY_PASS=passme
-      - DB_NAME=sample
-      - DB_USER=mysql
-      - DB_PASS=mysql
-      - DB_URI=db:3306
-    volumes:
-      - ./java/target:/opt/jboss/wildfly/standalone/deployments/
-    depends_on:
-      - db
-    ports:
-      - "8080:8080" # application
-      - "9990:9990" # admin console
-
-  db:
-    container_name: "mysql_db"
-    image: "mysql"
-    environment:
-      - MYSQL_DATABASE=sample
-      - MYSQL_USER=mysql
-      - MYSQL_PASSWORD=mysql
-      - MYSQL_ROOT_PASSWORD=supersecret
+      MYSQL_DATABASE: anime
+      MYSQL_USER: mariadb
+      MYSQL_PASSWORD: mariadb
+      MYSQL_ROOT_PASSWORD: supersecret
     volumes:
       - ./db/init/:/docker-entrypoint-initdb.d/ # init database
       - ./db/data/:/var/lib/mysql/              # data storage
     ports:
       - "3306:3306"
-
-networks:
-    default:
-        driver: bridge
+  
+  java:
+    container_name: "wildfly_server"
+    build: ./java
+    volumes:
+      - ./java/target:/opt/jboss/wildfly/standalone/deployments/
+      - ./java:/data
+    ports:
+      - 8080:8080
+      - 9990:9990
+    depends_on:
+      - mysql
