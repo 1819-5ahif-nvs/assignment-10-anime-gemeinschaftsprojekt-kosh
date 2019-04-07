@@ -116,6 +116,16 @@ export default class UpdateComp extends HTMLElement {
 			elem.forumURL = this.elem("#forum").value;
 			
 			this.worker.update(elem);
+
+
+			const customEvent = new CustomEvent("router", {
+				bubbles: true,
+				detail: {
+					menu: "UPDATE"
+				}
+			});
+
+			document.dispatchEvent(customEvent);
 		};
 
 		this.elem("#episodes").onchange = _ => {
