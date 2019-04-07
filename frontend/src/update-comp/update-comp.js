@@ -13,14 +13,13 @@ export default class UpdateComp extends HTMLElement {
 	connectedCallback() {
 		this.appendHTML();
 		this.createOptions();
-		//this.addFunctionality();
+		this.addFunctionality();
 	}
 
 	async createOptions() {
 		this.data = await this.worker.readAll();
 		const select = this.root.querySelector("#episodes");
 		this.data.forEach(elem => {
-			console.log("get called");
 			let tag = document.createElement("option");
 			tag.setAttribute("value", elem.episodeId);
 			tag.innerText = elem.title;
@@ -115,11 +114,19 @@ export default class UpdateComp extends HTMLElement {
 			elem.airedTo = this.elem("#airedto").value;
 			elem.videoURL = this.elem("#video").value;
 			elem.forumURL = this.elem("#forum").value;
-			console.log(elem.airedFrom);
-
 			
 			(new FetchWorker()).create(elem);
 		};
+
+		this.elem("#episodes").onchange = _ => {
+			const selected = this.elem("#episodes").options[this.elem("#episodes").selectedIndex];
+			this.data.forEach(elem => {
+				if(elem.episodeId == selected.getAttribute("value")) {
+					this.current = elem;
+					this.loadEpisodeData();
+				}
+			})
+		}
 	}
 
 	elem(str) {
