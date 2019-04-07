@@ -37,6 +37,13 @@ export default class CreateComp extends HTMLElement {
 			console.log(elem);
 			(new FetchWorker()).create(elem);
 		};
+
+		this.elem("#airedFrom").onfocus = evt => this.onDateFocus(evt);
+		this.elem("#airedTo").onfocus = evt => this.onDateFocus(evt);
+	}
+
+	onDateFocus(evt) {
+		evt.srcElement.setAttribute("type", "date");
 	}
 
 	elem(str) {

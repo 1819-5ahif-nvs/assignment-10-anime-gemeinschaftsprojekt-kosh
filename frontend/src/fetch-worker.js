@@ -12,8 +12,6 @@ export default class FetchWorker {
 			}
 		});
 
-		console.log(JSON.stringify(data));
-
 		return resp.status;
 	}
 
@@ -22,8 +20,16 @@ export default class FetchWorker {
 		return await resp.json();
 	}
 
-	update(data) {
+	async update(data) {
+		const resp = await fetch(this.baseurl, {
+			method: "PUT",
+			body: JSON.stringify(data),
+			headers: {
+				'Content-Type': 'application/json'
+			}
+		});
 
+		return resp.status;
 	}
 
 	delete(data) {
