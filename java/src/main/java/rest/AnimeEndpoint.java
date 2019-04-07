@@ -77,12 +77,11 @@ public class AnimeEndpoint {
 
     @DELETE
     @ApiOperation(value = "Delete Anime")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Path("/delete/{animeId}")
+    @Path("/{animeId}")
     public Response deleteAnime(@ApiParam(value = "expenditureId", required = true) @PathParam("animeId") Long animeId) {
         Anime anime = animeFacade.getAnimeById(animeId);
         if(anime != null) {
-            animeFacade.delete(anime);
+            animeFacade.delete(animeId);
             return Response.ok().status(204)
                     .build();
         }

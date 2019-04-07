@@ -1,5 +1,6 @@
 package entities;
 
+import javax.inject.Named;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -7,7 +8,8 @@ import java.util.Date;
 @Entity
 @NamedQueries({
         @NamedQuery(name="Anime.getAllAnimes", query = "select a from Anime a"),
-        @NamedQuery(name="Anime.getAnimeById", query = "select a from Anime a where a.episodeId = :episodeId")
+        @NamedQuery(name="Anime.getAnimeById", query = "select a from Anime a where a.episodeId = :episodeId"),
+        @NamedQuery(name="Anime.deleteAnimeById", query = "delete from Anime a where a.episodeId = :episodeId")
 })
 public class Anime implements Serializable {
     @Id
