@@ -21,6 +21,13 @@ ENV DEPLOYMENT_DIR /opt/jboss/wildfly/standalone/deployments/
 RUN echo "=> Adding WildFly administrator"
 RUN $JBOSS_HOME/bin/add-user.sh -u $WILDFLY_USER -p $WILDFLY_PASS --silent
 
+USER root
+
+RUN echo "=> Installing MySQL-client" && \
+    yum install -y mysql
+
+USER jboss
+
 # Configure Wildfly server
 RUN echo "=> Starting WildFly server" && \
       bash -c '$JBOSS_HOME/bin/standalone.sh &' && \
@@ -53,7 +60,7 @@ RUN echo "=> Starting WildFly server" && \
 # Expose http and admin ports
 EXPOSE 8080 9990
 
-#echo "=> Restarting WildFly"
+# echo "=> Restarting WildFly"
 # Set the default command to run on boot
 # This will boot WildFly in the standalone mode and bind to all interfaces
-CMD ["/opt/jboss/wildfly/bin/standalone.sh", "-b", "0.0.0.0", "-bmanagement", "0.0.0.0"]
+CMD ["/data/wait.sh"]

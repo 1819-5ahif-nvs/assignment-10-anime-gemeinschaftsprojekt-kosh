@@ -5,13 +5,13 @@ services:
     container_name: "maria_db"
     image: "mariadb:latest"
     environment:
-      MYSQL_DATABASE: Db
-      MYSQL_USER: maria
-      MYSQL_PASSWORD: maria
+      MYSQL_DATABASE: anime
+      MYSQL_USER: mariadb
+      MYSQL_PASSWORD: mariadb
       MYSQL_ROOT_PASSWORD: supersecret
     volumes:
-      - ./workdir/db/init/:/docker-entrypoint-initdb.d/ # init database
-      - ./workdir/db/data/:/var/lib/mysql/              # data storage
+      - ./db/init/:/docker-entrypoint-initdb.d/ # init database
+      - ./db/data/:/var/lib/mysql/              # data storage
     ports:
       - "3306:3306"
   
@@ -20,6 +20,7 @@ services:
     build: ./java
     volumes:
       - ./java/target:/opt/jboss/wildfly/standalone/deployments/
+      - ./java:/data
     ports:
       - 8080:8080
       - 9990:9990
