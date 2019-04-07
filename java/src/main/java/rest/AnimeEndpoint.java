@@ -41,13 +41,9 @@ public class AnimeEndpoint {
     */
     @POST
     @ApiOperation(value = "Add Anime")
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response addAnime(@ApiParam(value = "jsonAnime", required = true) JSONObject json) throws ParseException {
-
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-        Anime anime = new Anime(json.getString("title"), sdf.parse(json.getString("airedFrom")), sdf.parse(json.getString("airedTo")), json.getString("videoURL"), json.getString("forumURL"));
-
-        animeFacade.save(anime);
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response addAnime(@ApiParam(value = "jsonAnime", required = true) Anime a) {
+        animeFacade.save(a);
         return Response.ok().status(201)
                 .build();
     }
@@ -65,19 +61,13 @@ public class AnimeEndpoint {
     */
     @PUT
     @ApiOperation(value = "Update Anime")
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response updateAnime(@ApiParam(value = "jsonAnime", required = true) JSONObject json) throws ParseException {
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-        Anime anime = animeFacade.getAnimeById(json.getLong("episodeId"));
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response updateAnime(@ApiParam(value = "jsonAnime", required = true) Anime a) {
 
+        System.out.println(a.getTitle());
+        Anime anime = animeFacade.getAnimeById(a.getEpisodeId());
         if(anime != null) { //check if Anime with that id really exists
-
-            anime.setTitle(json.getString("title"));
-            anime.setAiredFrom(sdf.parse(json.getString("airedFrom")));
-            anime.setAiredTo(sdf.parse(json.getString("airedTo")));
-            anime.setVideoURL(json.getString("videoURL"));
-            anime.setForumURL(json.getString("forumURL"));
-            animeFacade.save(anime);
+            animeFacade.save(a);
 
             return Response.ok()
                     .build();
