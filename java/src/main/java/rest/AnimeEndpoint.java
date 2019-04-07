@@ -42,12 +42,8 @@ public class AnimeEndpoint {
     @POST
     @ApiOperation(value = "Add Anime")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response addAnime(@ApiParam(value = "jsonAnime", required = true) JSONObject json) throws ParseException {
-
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-        Anime anime = new Anime(json.getString("title"), sdf.parse(json.getString("airedFrom")), sdf.parse(json.getString("airedTo")), json.getString("videoURL"), json.getString("forumURL"));
-
-        animeFacade.save(anime);
+    public Response addAnime(@ApiParam(value = "jsonAnime", required = true) Anime a) throws ParseException {
+        animeFacade.save(a);
         return Response.ok().status(201)
                 .build();
     }
