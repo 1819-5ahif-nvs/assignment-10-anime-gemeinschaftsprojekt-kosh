@@ -25,6 +25,10 @@ export default class  LoginComp extends HTMLElement {
 	}
 
 	addFunctionality() {
+		this.root.querySelector("#submit").onclick = _ => {
+			const elem = document.createElement("app-comp");
+			this.replaceWith(elem);
+		}
 	}
 }
 
