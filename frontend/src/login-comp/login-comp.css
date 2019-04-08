@@ -1,0 +1,35 @@
+#body {
+	display: grid;
+	margin: 25px 50px;
+	grid-template-rows: 100px auto;
+	width: calc(100% - 100px);
+	height: calc(100% - 50px);
+}
+
+#header {
+	text-align: center;
+	font-family: Roboto;
+}
+
+.content {
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	border-radius: 15px;
+	height: 100%;
+	width: 100%;
+}
+
+#inputfields {
+	display: grid;
+	grid-template-columns: 150px 150px;
+	grid-template-rows: 50px 50px;
+	height: 100px;
+	width: 300px;
+	background: blue;
+
+	position: absolute;
+	margin: auto;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
