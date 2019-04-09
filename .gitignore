@@ -123,3 +123,5 @@ hs_err_pid*
 frontend/node_modules/
 
 java/\.idea/
+.idea/latest.iml
+.idea/workspace.xml
