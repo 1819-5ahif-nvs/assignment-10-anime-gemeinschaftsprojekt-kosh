@@ -4,11 +4,13 @@ import entities.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
 
 import javax.enterprise.context.RequestScoped;
 import javax.security.enterprise.credential.Credential;
 import javax.security.enterprise.identitystore.CredentialValidationResult;
 import javax.security.enterprise.identitystore.IdentityStore;
+import java.util.Collections;
 
 @RequestScoped
 public class JWTStore implements IdentityStore {
@@ -22,7 +24,7 @@ public class JWTStore implements IdentityStore {
                         .setSigningKey(privateKey)
                         .parseClaimsJws(((JWTCredential) credential).getValue());
 
-                return CredentialValidationResult(((Claims)claims.getBody()).get("name").toString(), ((Claims)claims.getBody()).get("scope").toString());
+                return new CredentialValidationResult(((Claims)claims.getBody()).get("name").toString(), Collections.singleton(((Claims) claims.getBody()).get("scope").toString()));
             }
         } catch (Exception e) {
             return CredentialValidationResult.NOT_VALIDATED_RESULT;
@@ -31,8 +33,10 @@ public class JWTStore implements IdentityStore {
     }
 
     public JWTCredential generateJWT(User user) {
-        JWTCredential(Jwts.builder()
-        .claim("name", user.getUsername())
-        .claim())
+        return new JWTCredential(Jwts.builder()
+            .claim("name", user.getUsername())
+            .claim("scope", "user")
+            .signWith(SignatureAlgorithm.ES256, privateKey)
+            .compact());
     }
 }

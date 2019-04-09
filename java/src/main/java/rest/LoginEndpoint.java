@@ -1,22 +1,32 @@
 package rest;
 
+import business.UserRepository;
+import entities.User;
+import rest.jwt.JWTCredential;
+import rest.jwt.JWTStore;
+
+import javax.inject.Inject;
+import javax.json.JsonObject;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.core.HttpHeaders;
+import javax.ws.rs.core.Response;
 
 @Path("login")
 public class LoginEndpoint {
+    
+    private UserRepository repo = new UserRepository();
     @Inject
-    private lateinit var userRepository: UserRepository
-
-    @Inject
-    private lateinit var jwtStore: JWTStore
+    private JWTStore jwtStore;
 
     @POST
-    open fun login(credentials: JsonObject): Response {
-        val user = userRepository.find(credentials.getString("username"))
-        if(user != null && user.password == credentials.getString("password")) {
-            val jwt = jwtStore.generateJWT(user)
-            return Response.ok().header(HttpHeaders.AUTHORIZATION, "BEARER " + jwt.value).build()
+    public Response login(JsonObject credentials){
+        User user = repo.find(credentials.getString("username"));
+        if(user != null && user.getPassword() == credentials.getString("password")) {
+            JWTCredential jwt = jwtStore.generateJWT(user);
+            return Response.ok().header(HttpHeaders.AUTHORIZATION, "BEARER " + jwt.getValue()).build();
         }
-        return Response.status(400).build()
+        else
+            return Response.status(400).build();
     }
 }

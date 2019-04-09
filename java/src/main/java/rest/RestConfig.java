@@ -1,10 +1,13 @@
 package rest;
 
 import io.swagger.jaxrs.config.BeanConfig;
+
+import javax.annotation.security.DeclareRoles;
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
 @ApplicationPath("rs")
+@DeclareRoles("user")
 public class RestConfig extends Application {
 
     public RestConfig() {

@@ -125,3 +125,8 @@ frontend/node_modules/
 java/\.idea/
 .idea/latest.iml
 .idea/workspace.xml
+frontend/.idea/frontend.iml
+frontend/.idea/modules.xml
+frontend/.idea/misc.xml
+frontend/.idea/vcs.xml
+frontend/.idea/workspace.xml
