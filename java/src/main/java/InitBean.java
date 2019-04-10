@@ -16,6 +16,7 @@ import javax.json.JsonObject;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.UnknownHostException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
@@ -33,11 +34,11 @@ public class InitBean {
 
     @PostConstruct
     public void init() {
-        List<Anime> list = null;
+        List<Anime> list = new ArrayList<>();
         try {
             list = fetchAnimes("https://api.jikan.moe/v3/anime/1/episodes/1"); //url for REST Endpoint
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("ERROR: no internet connection !");
         } catch (ParseException e) {
             e.printStackTrace();
         }
