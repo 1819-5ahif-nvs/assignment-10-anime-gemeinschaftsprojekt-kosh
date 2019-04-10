@@ -2,9 +2,12 @@ package rest;
 
 import io.swagger.jaxrs.config.BeanConfig;
 
+import javax.annotation.Resource;
 import javax.annotation.security.DeclareRoles;
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
+import java.util.HashSet;
+import java.util.Set;
 
 @ApplicationPath("rs")
 @DeclareRoles("user")
@@ -20,7 +23,7 @@ public class RestConfig extends Application {
         beanConfig.setSchemes(new String[]{"http"});
         beanConfig.setHost("localhost:8080");
         beanConfig.setBasePath("anime/rs");
-        beanConfig.setResourcePackage("at.htl.rest");
+        beanConfig.setResourcePackage("rest");
         beanConfig.setTitle("Anime - Server");
         beanConfig.setDescription("REST documentation");
         beanConfig.setScan(true);
