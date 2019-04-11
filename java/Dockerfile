@@ -10,7 +10,7 @@ ENV DB_NAME anime
 ENV DB_USER mariadb
 ENV DB_PASS mariadb
 ENV DB_URI maria_db:3306
-ENV MYSQL_VERSION 6.0.6
+ENV MYSQL_VERSION 8.0.15
 ENV JBOSS_CLI /opt/jboss/wildfly/bin/jboss-cli.sh
 ENV DEPLOYMENT_DIR /opt/jboss/wildfly/standalone/deployments/
 
