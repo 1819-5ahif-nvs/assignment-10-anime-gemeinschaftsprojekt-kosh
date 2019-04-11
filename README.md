@@ -1,7 +1,11 @@
 # JWT, JEE, WebComponents, Docker, Soteria
 
-**Topic**: Anime
+**Topic**: Anime  
 **Application-Server**: Wildfly
+
+## Quickstart
+
+> docker-compose up
 
 ## Hauer
 
