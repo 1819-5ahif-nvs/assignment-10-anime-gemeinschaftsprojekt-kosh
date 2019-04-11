@@ -17,11 +17,11 @@ export default class DataComp extends HTMLElement {
 	}
 	
 	get airedfrom() {
-		return this.dateParser(this.getAttribute("airedfrom"));
+		return this.getAttribute("airedfrom");
 	}
 
 	get airedto() {
-		return this.dateParser(this.getAttribute("airedto"));
+		return this.getAttribute("airedto");
 	}
 
 	get videourlShorted() {
@@ -40,14 +40,6 @@ export default class DataComp extends HTMLElement {
 
 	get forumurl() {
 		return this.getAttribute("forumurl");
-	}
-
-	dateParser(date) {
-		//Oct 24, 1998 12:00:00 AM
-		if(date === "Jan 1, 0001 12:00:00 AM")
-			return "no date";
-		const splits = date.split(" ");
-		return splits[0] + " " + splits[1] + " " + splits[2];
 	}
 
 	connectedCallback() {

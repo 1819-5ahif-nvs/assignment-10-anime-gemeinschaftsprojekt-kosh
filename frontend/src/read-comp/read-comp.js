@@ -54,11 +54,18 @@ export default class ReadComp extends HTMLElement {
 		const tag = document.createElement("data-comp");
 		tag.setAttribute("episodeid", elem.episodeId);
 		tag.setAttribute("title", elem.title);
-		tag.setAttribute("airedfrom", elem.airedFrom);
-		tag.setAttribute("airedto", elem.airedTo);
+		tag.setAttribute("airedfrom", this.createDateString(elem.airedFrom));
+		tag.setAttribute("airedto", this.createDateString(elem.airedTo));
 		tag.setAttribute("forumurl", elem.forumURL);
 		tag.setAttribute("videourl", elem.videoURL);
 		return tag;
+	}
+
+	createDateString(date) {
+		if(date.year == "9999") {
+			return "no date";
+		}
+		return date.day + "." + date.month + "." + date.year;
 	}
 
 	createDummyTag() {
