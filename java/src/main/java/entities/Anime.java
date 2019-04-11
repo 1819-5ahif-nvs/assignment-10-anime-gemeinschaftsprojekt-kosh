@@ -3,6 +3,7 @@ package entities;
 import javax.inject.Named;
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -16,13 +17,13 @@ public class Anime implements Serializable {
     private Long episodeId;
 
     private String title;
-    private Date airedFrom;
-    private Date airedTo;
+    private LocalDate airedFrom;
+    private LocalDate airedTo;
     private String videoURL;
     private String forumURL;
 
     //region constructors
-    public Anime(String title, Date airedFrom, Date airedTo, String videoURL, String forumURL) {
+    public Anime(String title, LocalDate airedFrom, LocalDate airedTo, String videoURL, String forumURL) {
         this.title = title;
         this.airedFrom = airedFrom;
         this.airedTo = airedTo;
@@ -51,19 +52,19 @@ public class Anime implements Serializable {
         this.title = title;
     }
 
-    public Date getAiredFrom() {
+    public LocalDate getAiredFrom() {
         return airedFrom;
     }
 
-    public void setAiredFrom(Date airedFrom) {
+    public void setAiredFrom(LocalDate airedFrom) {
         this.airedFrom = airedFrom;
     }
 
-    public Date getAiredTo() {
+    public LocalDate getAiredTo() {
         return airedTo;
     }
 
-    public void setAiredTo(Date airedTo) {
+    public void setAiredTo(LocalDate airedTo) {
         this.airedTo = airedTo;
     }
 

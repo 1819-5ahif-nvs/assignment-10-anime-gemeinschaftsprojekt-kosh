@@ -19,6 +19,7 @@ import java.io.InputStreamReader;
 import java.net.UnknownHostException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
@@ -69,7 +70,7 @@ public class InitBean {
         JSONObject jsonObj = new JSONObject(result.toString());
         JSONArray jsonArr = jsonObj.getJSONArray("episodes");
 
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         List<Anime> animeList = new ArrayList<>();
 
         String dateFrom;
@@ -78,7 +79,7 @@ public class InitBean {
         for (int i = 0; i < jsonArr.length(); i++) {
             jsonObj = jsonArr.getJSONObject(i);
             date = jsonObj.getJSONObject("aired"); //extra json object in json structure
-            animeList.add(new Anime(jsonObj.getString("title"), sdf.parse(date.optString("from","00-01-01T").split("T")[0]), sdf.parse(date.optString("to","00-01-01T").split("T")[0]), jsonObj.getString("video_url"), jsonObj.getString("forum_url"))); //if date from or to is null, set default date
+            animeList.add(new Anime(jsonObj.getString("title"), LocalDate.parse(date.optString("from","9999-01-01T").split("T")[0],formatter), LocalDate.parse(date.optString("to","9999-01-01T").split("T")[0],formatter), jsonObj.getString("video_url"), jsonObj.getString("forum_url"))); //if date from or to is null, set default date
         }
 
         return animeList;
