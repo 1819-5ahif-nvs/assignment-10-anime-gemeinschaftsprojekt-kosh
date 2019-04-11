@@ -1,4 +1,4 @@
-# JWT, JEE, WebComponents, Docker, Selenium
+# JWT, JEE, WebComponents, Docker, Soteria
 
 **Topic**: Anime
 **Application-Server**: Wildfly
@@ -17,4 +17,4 @@ Backend mit JWT und JavaEE; Swagger
 
 ## Sheludchenko
 
-Selenium (?)
+Soteria
