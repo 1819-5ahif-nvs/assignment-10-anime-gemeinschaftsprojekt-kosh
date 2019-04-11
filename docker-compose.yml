@@ -1,7 +1,7 @@
 version: '3'
 
 services:
-  mysql:
+  mariadb:
     container_name: "maria_db"
     image: "mariadb:latest"
     environment:
@@ -20,9 +20,8 @@ services:
     build: ./java
     volumes:
       - ./java/target:/opt/jboss/wildfly/standalone/deployments/
-      - ./java:/data
     ports:
       - 8080:8080
       - 9990:9990
     depends_on:
-      - mysql
+      - mariadb
