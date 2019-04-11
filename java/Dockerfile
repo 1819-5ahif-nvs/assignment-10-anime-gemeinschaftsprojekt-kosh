@@ -1,4 +1,4 @@
-FROM jboss/wildfly:11.0.0.Final
+FROM jboss/wildfly:16.0.0.Final
 
 # Applicationserver
 ENV WILDFLY_USER admin
@@ -10,7 +10,7 @@ ENV DB_NAME anime
 ENV DB_USER mariadb
 ENV DB_PASS mariadb
 ENV DB_URI maria_db:3306
-ENV MYSQL_VERSION 6.0.6
+ENV MYSQL_VERSION 8.0.15
 ENV JBOSS_CLI /opt/jboss/wildfly/bin/jboss-cli.sh
 ENV DEPLOYMENT_DIR /opt/jboss/wildfly/standalone/deployments/
 
@@ -20,8 +20,11 @@ RUN $JBOSS_HOME/bin/add-user.sh -u $WILDFLY_USER -p $WILDFLY_PASS --silent
 
 USER root
 
+# Installing MySQL-Client used in 'wait.sh' and installing Java 8
 RUN echo "=> Installing MySQL-client" && \
-    yum install -y mysql
+    yum install -y mysql && \
+    echo "=> Installing correct Java-version (8)" && \
+    yum install -y java-1.8.0-openjdk-devel
 
 USER jboss
 
