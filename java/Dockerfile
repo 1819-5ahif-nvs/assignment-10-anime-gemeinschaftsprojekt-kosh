@@ -1,4 +1,4 @@
-FROM jboss/wildfly:16.0.0.Final
+FROM jboss/wildfly:latest
 
 # Applicationserver
 ENV WILDFLY_USER admin
