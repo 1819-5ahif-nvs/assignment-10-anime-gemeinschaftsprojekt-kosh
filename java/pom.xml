@@ -42,11 +42,6 @@
             <version>1.5.8</version>
         </dependency>
         <dependency>
-            <groupId>io.swagger</groupId>
-            <artifactId>swagger-jaxrs</artifactId>
-            <version>1.5.8</version>
-        </dependency>
-        <dependency>
             <groupId>com.airhacks</groupId>
             <artifactId>jaxrs-cors</artifactId>
             <version>0.0.2</version>
