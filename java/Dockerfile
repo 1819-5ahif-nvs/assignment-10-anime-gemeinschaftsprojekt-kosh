@@ -20,12 +20,11 @@ RUN $JBOSS_HOME/bin/add-user.sh -u $WILDFLY_USER -p $WILDFLY_PASS --silent
 
 USER root
 
+# Installing MySQL-Client used in 'wait.sh' and installing Java 8
 RUN echo "=> Installing MySQL-client" && \
     yum install -y mysql && \
     echo "=> Installing correct Java-version (8)" && \
     yum install -y java-1.8.0-openjdk-devel
-#    echo "=> Correcting JAVA_HOME" && \
-#    JAVA_HOME=
 
 USER jboss
 
