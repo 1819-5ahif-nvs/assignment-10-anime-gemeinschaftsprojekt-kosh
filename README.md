@@ -7,6 +7,8 @@
 
 > docker-compose up
 
+Swagger-Dokumentation verfügbar unter <http://localhost:8080/anime/swagger.html>
+
 ## Hauer
 
 Frontend mit WebComponents
