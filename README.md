@@ -17,6 +17,15 @@ Frontend mit WebComponents
 
 Docker mit Wildfly 16 (latest) und MariaDB
 
+**Aufgaben**:
+
+* docker-compose.yml mit MariaDB und Wildfly erstellen
+* Dockerfile für Wildfly erstellen
+  * MySQL-Client installieren
+  * Java 8 installieren
+  * Datasource mit Treiber aufsetzen
+* wait.sh-Datei (um auf die DB zu warten) erstellen und verwenden
+
 ## Oberaigner
 
 Backend mit JavaEE und fetchen der Anime-Daten; Swagger
