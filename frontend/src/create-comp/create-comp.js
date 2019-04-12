@@ -34,7 +34,12 @@ export default class CreateComp extends HTMLElement {
 			elem.videoURL = this.elem("#video").value;
 			elem.forumURL = this.elem("#forum").value;
 
-			console.log(elem);
+			this.elem("#title").value = "";
+			this.elem("#airedfrom").value = "";
+			this.elem("#airedto").value = "";
+			this.elem("#video").value = "";
+			this.elem("#forum").value = "";
+
 			(new FetchWorker()).create(elem);
 		};
 
