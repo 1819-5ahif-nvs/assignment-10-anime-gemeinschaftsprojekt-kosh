@@ -3,19 +3,17 @@ package rest;
 import business.AnimeFacade;
 import com.google.gson.GsonBuilder;
 import entities.Anime;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
-import org.json.JSONObject;
-
 import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 
 @RolesAllowed("user")
+@Api(value="Anime")
 @Path("anime")
 public class AnimeEndpoint {
     @Inject
