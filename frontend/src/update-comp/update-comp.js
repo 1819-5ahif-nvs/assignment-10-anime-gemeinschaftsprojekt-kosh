@@ -47,7 +47,22 @@ export default class UpdateComp extends HTMLElement {
 		if(date.year == "9999")
 			return "0001-01-01";
 
-		return date.year + "-" + this.getNum(date.month) + "-" + this.getNum(date.day);
+		return this.getYearNum(date.year) + "-" + this.getNum(date.month) + "-" + this.getNum(date.day);
+	}
+
+	getYearNum(num) {
+		let str = num.toString();
+		if(str.length == 3) {
+			str = "0" + str;
+		}
+		else if(str.length == 2) {
+			str = "00" + str;
+		}
+		else if(str.length == 1) {
+			str = "000" + str;
+		}
+		
+		return str;
 	}
 
 	getNum(num) {
@@ -62,15 +77,6 @@ export default class UpdateComp extends HTMLElement {
 		}
 	}
 
-	getDate(date) {
-		const split = date.split("-");
-		return new Date(split[0], split[1], split[2], 0, 0, 0, 0).toLocaleDateString(); /* {
-			year: split[0],
-			month: split[1],
-			day: split[2]
-		}; */
-	}
-
 	appendCSS() {
 		let style = document.createElement("style");
 		style.innerText = css;
@@ -82,12 +88,10 @@ export default class UpdateComp extends HTMLElement {
 			let elem = {};
 			elem.episodeId = this.current.episodeId
 			elem.title = this.elem("#title").value;
-			elem.airedFrom = this.getDate(this.elem("#airedfrom").value);
-			elem.airedTo = this.getDate(this.elem("#airedto").value);
+			elem.airedFrom = this.elem("#airedfrom").value;
+			elem.airedTo = this.elem("#airedto").value;
 			elem.videoURL = this.elem("#video").value;
 			elem.forumURL = this.elem("#forum").value;
-
-			console.log(elem.airedFrom);
 			
 			this.worker.update(elem);
 
