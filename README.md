@@ -7,7 +7,7 @@
 
 > docker-compose up
 
-Swagger-Dokumentation verfügbar unter <http://localhost:8080/anime/swagger.html>
+Swagger-Dokumentation verfügbar unter <http://localhost:8080/anime/rs/apiee/index.html>
 
 ## Hauer
 
@@ -19,7 +19,7 @@ Docker mit Wildfly 16 (latest) und MariaDB
 
 ## Oberaigner
 
-Backend mit JWT und JavaEE; Swagger
+Backend mit JavaEE und fetchen der Anime-Daten; Swagger
 
 ## Sheludchenko
 
