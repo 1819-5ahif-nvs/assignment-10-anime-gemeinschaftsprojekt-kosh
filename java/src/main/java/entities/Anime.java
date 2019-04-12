@@ -1,5 +1,8 @@
 package entities;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import converter.LocalDateAdapter;
+
 import javax.inject.Named;
 import javax.persistence.*;
 import java.io.Serializable;
@@ -17,7 +20,9 @@ public class Anime implements Serializable {
     private Long episodeId;
 
     private String title;
+    @JsonDeserialize(using= LocalDateAdapter.class)
     private LocalDate airedFrom;
+    @JsonDeserialize(using=LocalDateAdapter.class)
     private LocalDate airedTo;
     private String videoURL;
     private String forumURL;
