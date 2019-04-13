@@ -27,7 +27,10 @@ public class LoginEndpoint {
         User user = repo.find(credentials.getString("username"));
         if(user != null && user.getPassword().equals(credentials.getString("password"))) {
             JWTCredential jwt = jwtStore.generateJWT(user);
-            return Response.ok().header(HttpHeaders.AUTHORIZATION, "BEARER " + jwt.getValue()).build();
+            return Response.ok()
+                    .header(HttpHeaders.AUTHORIZATION, "BEARER " + jwt.getValue())
+                    .entity("{\"data\":\"" + jwt.getValue() + "\"}")
+                    .build();
         }
         else
             return Response.status(400).build();

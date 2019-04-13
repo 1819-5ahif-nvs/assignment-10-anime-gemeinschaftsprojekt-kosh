@@ -1,11 +1,21 @@
 import html from './login-comp.html';
 import css from './login-comp.css';
+import LoginWorker from './../login-worker';
 
 export default class  LoginComp extends HTMLElement {
 	constructor() {
 		super();
 
 		this.root = this.attachShadow({mode: "closed"})
+		this.worker = new LoginWorker();
+	}
+
+	get username() {
+		return this.root.querySelector("#username");
+	}
+
+	get password() {
+		return this.root.querySelector("#password");
 	}
 
 	connectedCallback() {
@@ -25,9 +35,21 @@ export default class  LoginComp extends HTMLElement {
 	}
 
 	addFunctionality() {
-		this.root.querySelector("#submit").onclick = _ => {
+		this.root.querySelector("#submit").onclick = async _ => {
 			const elem = document.createElement("app-comp");
-			this.replaceWith(elem);
+			//this.replaceWith(elem);
+			/*const resp = await this.worker.login(this.username, this.password);
+			if(resp == null) {
+				this.root.querySelector("#username").value = "";
+				this.root.querySelector("#password").value = "";
+			}*/
+			//else {
+				//token = resp;
+				token = "test";
+				console.log(token);
+				elem.setAttribute("token", "test");
+				this.replaceWith(elem);
+			//}
 		}
 	}
 }
