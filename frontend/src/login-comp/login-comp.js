@@ -1,11 +1,13 @@
 import html from './login-comp.html';
 import css from './login-comp.css';
+import LoginWorker from './../login-worker';
 
 export default class  LoginComp extends HTMLElement {
 	constructor() {
 		super();
 
 		this.root = this.attachShadow({mode: "closed"})
+		this.worker = new LoginWorker();
 	}
 
 	connectedCallback() {
@@ -27,7 +29,8 @@ export default class  LoginComp extends HTMLElement {
 	addFunctionality() {
 		this.root.querySelector("#submit").onclick = _ => {
 			const elem = document.createElement("app-comp");
-			this.replaceWith(elem);
+			//this.replaceWith(elem);
+			this.worker.login("admin", "passme");
 		}
 	}
 }
