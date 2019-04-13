@@ -22,9 +22,12 @@ Docker mit Wildfly 16 (latest) und MariaDB
 * docker-compose.yml mit MariaDB und Wildfly erstellen
 * Dockerfile für Wildfly erstellen
   * MySQL-Client installieren
-  * Java 8 installieren
+  * Java 8 installieren (vorinstalliertes Java 11 wirft Fehler)
   * Datasource mit Treiber aufsetzen
+* Umgebungsvariablen korrekt setzen (Benutzernamen, Passwörter, DB-Name, ...)
 * wait.sh-Datei (um auf die DB zu warten) erstellen und verwenden
+
+Angestrebte Note: **1**
 
 ## Oberaigner
 
