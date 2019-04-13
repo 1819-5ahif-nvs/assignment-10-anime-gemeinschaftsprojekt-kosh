@@ -6,3 +6,5 @@ import ReadComp from './read-comp/read-comp';
 import UpdateComp from './update-comp/update-comp';
 import DataComp from './read-comp/data-comp/data-comp';
 import DeleteComp from './delete-comp/delete-comp';
+
+let token = "";
