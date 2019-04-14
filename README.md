@@ -46,6 +46,8 @@ um den Swagger Editor direkt auf über den Wildfly hosten zu können, wurde ledi
 
 Außerdem werden durch diese dependency die Swagger dependencies automatisch eigebunden und man kann die Endpoints annotieren.
 
+Angestrebte Note: **2** <br>
+Angestrebte Zeugnisnote: **2**
 ## Sheludchenko
 
 Soteria
