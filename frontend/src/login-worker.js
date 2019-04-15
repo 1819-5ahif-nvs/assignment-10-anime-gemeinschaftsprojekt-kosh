@@ -17,6 +17,11 @@ export default class LoginWorker {
 			})
 		});
 
+		console.log(JSON.stringify({
+			username: username,
+			password: password
+		}))
+
 		if(resp.status == 200)
 			return await resp.json();
 		

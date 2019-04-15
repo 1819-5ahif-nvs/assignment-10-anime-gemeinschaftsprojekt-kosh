@@ -11,11 +11,11 @@ export default class  LoginComp extends HTMLElement {
 	}
 
 	get username() {
-		return this.root.querySelector("#username");
+		return this.root.querySelector("#username").value;
 	}
 
 	get password() {
-		return this.root.querySelector("#password");
+		return this.root.querySelector("#password").value;
 	}
 
 	connectedCallback() {
@@ -38,18 +38,16 @@ export default class  LoginComp extends HTMLElement {
 		this.root.querySelector("#submit").onclick = async _ => {
 			const elem = document.createElement("app-comp");
 			//this.replaceWith(elem);
-			/*const resp = await this.worker.login(this.username, this.password);
+			const resp = await this.worker.login(this.username, this.password);
 			if(resp == null) {
 				this.root.querySelector("#username").value = "";
 				this.root.querySelector("#password").value = "";
-			}*/
-			//else {
-				//token = resp;
-				token = "test";
-				console.log(token);
+			}
+			else {
+				console.log(resp);
 				elem.setAttribute("token", "test");
-				this.replaceWith(elem);
-			//}
+				//this.replaceWith(elem);
+			}
 		}
 	}
 }

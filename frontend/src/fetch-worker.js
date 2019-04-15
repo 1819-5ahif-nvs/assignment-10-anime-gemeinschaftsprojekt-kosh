@@ -1,6 +1,6 @@
 export default class FetchWorker {
 	constructor() {
-		this.baseurl = "http://localhost:8080/anime/rs/anime";
+		this.baseurl = "http://localhost:8080/anime/rs/episode";
 	}
 
 	async create(data) {
