@@ -34,8 +34,7 @@ export default class UpdateComp extends HTMLElement {
 		this.elem("#title").value = this.current.title;
 		this.elem("#video").value = this.current.videoURL;
 		this.elem("#forum").value = this.current.forumURL;
-		this.elem("#airedFrom").value = this.dateParser(this.current.airedFrom);
-		this.elem("#airedTo").value = this.dateParser(this.current.airedTo);
+		this.elem("#aired").value = this.dateParser(this.current.aired);
 	}
 
 	appendHTML() {
@@ -88,8 +87,7 @@ export default class UpdateComp extends HTMLElement {
 			let elem = {};
 			elem.episodeId = this.current.episodeId
 			elem.title = this.elem("#title").value;
-			elem.airedFrom = this.elem("#airedfrom").value;
-			elem.airedTo = this.elem("#airedto").value;
+			elem.aired = this.elem("#aired").value;
 			elem.videoURL = this.elem("#video").value;
 			elem.forumURL = this.elem("#forum").value;
 			
