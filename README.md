@@ -88,6 +88,7 @@ Soteria
 * Implementierung von Soteria
 * Implementierung der div. Rollen
 * Implementierung von Login-Endpoint
+
 (Arbeit wurde teilweise auf dem Laptop von Tobias Kneidinger erledigt, da der Docker-Container nicht auf Windows Home gestartet werden könnte)
 
 Angestrebte Zeugnisnote: **4**
