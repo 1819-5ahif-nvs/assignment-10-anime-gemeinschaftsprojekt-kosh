@@ -6,6 +6,14 @@
 ## Quickstart
 
 > docker-compose up
+> cd frontend
+> npm i
+> npm run build
+> npm start
+
+logins:
+admin/passme -> hat alle Rechte
+test/pass -> kann nur bearbeiten und anzeigen
 
 Swagger-Dokumentation verfügbar unter <http://localhost:8080/anime/rs/apiee/index.html>
 
@@ -22,7 +30,14 @@ Frontend mit WebComponents
 * Aktivierung von CORS
 
 **Tipp für CORS**
-
+```xml
+  <dependency>
+    <groupId>com.airhacks</groupId>
+    <artifactId>jaxrs-cors</artifactId>
+    <version>0.0.2</version>
+    <scope>compile</scope>
+  </dependency>
+```
 
 Angestrebte Note: **1**
 Angestrebte Zeugnisnote: **2**
