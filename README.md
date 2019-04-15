@@ -57,7 +57,8 @@ Docker mit Wildfly 16 (latest) und MariaDB
 * wait.sh-Datei (um auf die DB zu warten) erstellen und verwenden´
 * Einarbeitung der API-Changes
 
-Angestrebte Note: **1**
+Angestrebte Note: **1**  
+Angestrebte Zeugnisnote: **1**
 
 ## Oberaigner
 
