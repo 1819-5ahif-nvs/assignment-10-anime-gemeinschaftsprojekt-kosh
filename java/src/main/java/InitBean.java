@@ -1,5 +1,5 @@
 import business.AnimeFacade;
-import business.UserRepository;
+import business.UserFacade;
 import entities.Anime;
 import entities.User;
 import org.apache.http.HttpResponse;
@@ -28,13 +28,13 @@ public class InitBean {
     @Inject
     private AnimeFacade animeFacade;
     @Inject
-    private UserRepository userRepository;
+    private UserFacade userFacade;
     private final String USER_AGENT = "Mozilla/5.0";
 
     @PostConstruct
     public void init() {
-        userRepository.save(new User("admin", "passme", "admin"));
-        userRepository.save(new User("test", "pass", "user"));
+        userFacade.save(new User("admin", "passme", "admin"));
+        userFacade.save(new User("test", "pass", "user"));
 
         List<Anime> list = new ArrayList<>();
         try {
