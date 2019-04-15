@@ -62,7 +62,7 @@ Angestrebte Zeugnisnote: **1**
 
 ## Oberaigner
 
-Backend mit JavaEE (CRUD + DB) und fetchen der Anime-Daten; Swagger; CORS-Filter
+Backend mit JavaEE (CRUD + DB) und fetchen der Anime-Daten; Swagger; CORS-Filter um die HTTP-Header für die Fetch-Requests sichtbar zu machen (via WebFilter)
 
 **Tipp für Swagger:**  
 um den Swagger Editor direkt auf über den Wildfly hosten zu können, wurde lediglich folgende dependency eingebunden, wodurch der Editor automatisch auf <http://localhost:8080/anime/rs/apiee/index.html> aufrufbar ist:
