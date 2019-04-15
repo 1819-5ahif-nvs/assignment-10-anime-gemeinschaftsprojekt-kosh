@@ -1,5 +1,6 @@
 package rest.jwt;
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.security.enterprise.AuthenticationException;
 import javax.security.enterprise.AuthenticationStatus;
@@ -9,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.core.HttpHeaders;
 
+@ApplicationScoped
 public class JWTMechanism implements HttpAuthenticationMechanism {
 
     @Inject

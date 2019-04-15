@@ -5,7 +5,7 @@
     <security-constraint>
         <web-resource-collection>
             <web-resource-name>Protected url</web-resource-name>
-            <url-pattern>/rs/anime/*</url-pattern>
+            <url-pattern>*/episode/*</url-pattern>
         </web-resource-collection>
     </security-constraint>
     <context-param>

@@ -12,15 +12,15 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-@RolesAllowed("admin")
+@RolesAllowed({"admin", "user"})
 @Api(value="Anime")
-@Path("anime")
+@Path("episode")
 public class AnimeEndpoint {
     @Inject
     private AnimeFacade animeFacade;
 
     @GET
-    @RolesAllowed("user")
+    @RolesAllowed({"user", "admin"})
     @ApiOperation(value = "Get all Animes")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getCustomerItemsByDate() {
@@ -41,6 +41,7 @@ public class AnimeEndpoint {
     }
     */
     @POST
+    @RolesAllowed("admin")
     @ApiOperation(value = "Add Anime")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response addAnime(@ApiParam(value = "jsonAnime", required = true) Anime a) {
@@ -61,7 +62,7 @@ public class AnimeEndpoint {
     }
     */
     @PUT
-    @RolesAllowed("user")
+    @RolesAllowed({"user", "admin"})
     @ApiOperation(value = "Update Anime")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response updateAnime(@ApiParam(value = "jsonAnime", required = true) Anime a) {
@@ -79,6 +80,7 @@ public class AnimeEndpoint {
 
     @DELETE
     @ApiOperation(value = "Delete Anime")
+    @RolesAllowed("admin")
     @Path("/{animeId}")
     public Response deleteAnime(@ApiParam(value = "expenditureId", required = true) @PathParam("animeId") Long animeId) {
         Anime anime = animeFacade.getAnimeById(animeId);
