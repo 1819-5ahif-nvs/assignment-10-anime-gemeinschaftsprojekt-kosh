@@ -13,6 +13,16 @@ Swagger-Dokumentation verfügbar unter <http://localhost:8080/anime/rs/apiee/ind
 
 Frontend mit WebComponents
 
+**Aufgaben**
+* Konfiguration von Webpack & BrowserSync
+* MockUp
+* Implementierung und Design des Frontend
+* Implementierung der Kommunikation mit dem Server
+* Einarbeitung der API-Changes
+
+Angestrebte Note: **1**
+Angestrebte Zeugnisnote: **2**
+
 ## Kneidinger
 
 Docker mit Wildfly 16 (latest) und MariaDB
@@ -25,7 +35,8 @@ Docker mit Wildfly 16 (latest) und MariaDB
   * Java 8 installieren (vorinstalliertes Java 11 wirft Fehler)
   * Datasource mit Treiber aufsetzen
 * Umgebungsvariablen korrekt setzen (Benutzernamen, Passwörter, DB-Name, ...)
-* wait.sh-Datei (um auf die DB zu warten) erstellen und verwenden
+* wait.sh-Datei (um auf die DB zu warten) erstellen und verwenden´
+* Einarbeitung der API-Changes
 
 Angestrebte Note: **1**
 
@@ -53,8 +64,12 @@ Angestrebte Zeugnisnote: **2**
 
 Soteria
 
+**Aufgaben**
+* Implementierung von Soteria
+* Implementierung der div. Rollen
+
 ## Special Problems
 
 ### API-Änderungen während der Entwicklung
 
-Die API der Seite, von der die Rohdaten kommen, hat sich während der Entwicklung geändert. Dabei wurde das Feld *aired* aus nicht mehr als JSON-Objekt mitgegeben sondern als Datum. Dabei fiel das Feld *to* weg.
+Die API der Seite, von der die Rohdaten kommen, hat sich während der Entwicklung geändert. Deswegen musste die Applikation noch einmal angepasst werden. Diese Änderungen wurden von Hauer und Kneidinger eingearbeitet.
