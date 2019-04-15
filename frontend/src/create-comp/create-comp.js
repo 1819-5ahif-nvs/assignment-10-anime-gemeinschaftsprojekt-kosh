@@ -26,7 +26,7 @@ export default class CreateComp extends HTMLElement {
 	}
 
 	addFunctionality() {
-		this.elem("#button").onclick = _ => {
+		this.elem("#button").onclick = async _ => {
 			let elem = {};
 			elem.title = this.elem("#title").value;
 			elem.airedFrom = this.elem("#aired").value;
@@ -38,7 +38,11 @@ export default class CreateComp extends HTMLElement {
 			this.elem("#video").value = "";
 			this.elem("#forum").value = "";
 
-			(new FetchWorker(this.getAttribute("token"))).create(elem);
+			const status = await (new FetchWorker(this.getAttribute("token"))).create(elem);
+
+			if(status == "403") {
+				this.root.querySelector("#secondbody").innerHTML = `<p>permission denied</p>`;
+			}
 		};
 
 		this.elem("#aired").onfocus = evt => this.onDateFocus(evt);

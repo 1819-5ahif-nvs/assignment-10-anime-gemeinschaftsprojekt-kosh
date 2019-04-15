@@ -18,7 +18,6 @@ export default class FetchWorker {
 	}
 
 	async readAll() {
-		console.log("Bearer " + this.token);
 		const resp = await fetch(this.baseurl, {
 			headers: {
 				Authorization: "Bearer " + this.token

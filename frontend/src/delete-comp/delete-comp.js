@@ -55,7 +55,7 @@ export default class DeleteComp extends HTMLElement {
 		};
 
 		this.elem("#delete").onclick = async _ => {
-			await this.worker.delete(this.current.episodeId);
+			const status = await this.worker.delete(this.current.episodeId);
 
 			const customEvent = new CustomEvent("router", {
 				bubbles: true,
@@ -65,7 +65,11 @@ export default class DeleteComp extends HTMLElement {
 				}
 			});
 
-			setTimeout(_ => document.dispatchEvent(customEvent), 500);
+			if(status == "403") {
+				this.root.querySelector("#content").innerHTML = `<p>permission denied</p>`;
+			}
+			else
+				setTimeout(_ => document.dispatchEvent(customEvent), 500);
 		}
 	}
 }
