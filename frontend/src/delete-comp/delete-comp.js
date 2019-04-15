@@ -7,7 +7,7 @@ export default class DeleteComp extends HTMLElement {
 		super();
 
 		this.root = this.attachShadow({mode: "closed"})
-		this.worker = new FetchWorker();
+		this.worker = new FetchWorker(this.getAttribute("token"));
 	}
 
 	connectedCallback() {
@@ -60,7 +60,8 @@ export default class DeleteComp extends HTMLElement {
 			const customEvent = new CustomEvent("router", {
 				bubbles: true,
 				detail: {
-					menu: "DELETE"
+					menu: "DELETE",
+					token: this.getAttribute("token")
 				}
 			});
 

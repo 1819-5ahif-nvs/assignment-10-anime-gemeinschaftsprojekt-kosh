@@ -38,7 +38,7 @@ export default class CreateComp extends HTMLElement {
 			this.elem("#video").value = "";
 			this.elem("#forum").value = "";
 
-			(new FetchWorker()).create(elem);
+			(new FetchWorker(this.getAttribute("token"))).create(elem);
 		};
 
 		this.elem("#aired").onfocus = evt => this.onDateFocus(evt);

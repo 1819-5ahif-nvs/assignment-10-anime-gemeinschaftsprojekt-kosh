@@ -9,7 +9,8 @@ export default class FetchWorker {
 			method: "POST",
 			body: JSON.stringify(data),
 			headers: {
-				'Content-Type': 'application/json'
+				'Content-Type': 'application/json',
+				Authorization: "Bearer " + this.token
 			}
 		});
 
@@ -31,7 +32,8 @@ export default class FetchWorker {
 			method: "PUT",
 			body: JSON.stringify(data),
 			headers: {
-				'Content-Type': 'application/json'
+				'Content-Type': 'application/json',
+				Authorization: "Bearer " + this.token
 			}
 		});
 
@@ -41,7 +43,9 @@ export default class FetchWorker {
 	async delete(data) {
 		const resp = await fetch(this.baseurl + "/" + data, {
 			method: "DELETE",
-			mode: "cors"
+			headers: {
+				Authorization: "Bearer " + this.token
+			}
 		});
 
 		return resp.status;
