@@ -29,7 +29,7 @@ export default class CreateComp extends HTMLElement {
 		this.elem("#button").onclick = _ => {
 			let elem = {};
 			elem.title = this.elem("#title").value;
-			elem.aired = this.elem("#aired").value;
+			elem.airedFrom = this.elem("#aired").value;
 			elem.videoURL = this.elem("#video").value;
 			elem.forumURL = this.elem("#forum").value;
 

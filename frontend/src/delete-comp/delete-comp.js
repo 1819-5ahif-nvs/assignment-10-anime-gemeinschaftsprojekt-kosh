@@ -50,7 +50,6 @@ export default class DeleteComp extends HTMLElement {
 			this.data.forEach(elem => {
 				if(elem.episodeId == selected.getAttribute("value")) {
 					this.current = elem;
-					this.loadEpisodeData();
 				}
 			})
 		};
@@ -65,7 +64,7 @@ export default class DeleteComp extends HTMLElement {
 				}
 			});
 
-			document.dispatchEvent(customEvent);
+			setTimeout(_ => document.dispatchEvent(customEvent), 500);
 		}
 	}
 }

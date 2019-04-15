@@ -54,8 +54,7 @@ export default class ReadComp extends HTMLElement {
 		const tag = document.createElement("data-comp");
 		tag.setAttribute("episodeid", elem.episodeId);
 		tag.setAttribute("title", elem.title);
-		tag.setAttribute("airedfrom", this.createDateString(elem.airedFrom));
-		tag.setAttribute("airedto", this.createDateString(elem.airedTo));
+		tag.setAttribute("aired", this.createDateString(elem.airedFrom));
 		tag.setAttribute("forumurl", elem.forumURL);
 		tag.setAttribute("videourl", elem.videoURL);
 		return tag;

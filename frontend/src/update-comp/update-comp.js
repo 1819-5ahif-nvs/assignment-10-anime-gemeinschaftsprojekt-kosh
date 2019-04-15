@@ -19,6 +19,7 @@ export default class UpdateComp extends HTMLElement {
 	async createOptions() {
 		this.data = await this.worker.readAll();
 		const select = this.root.querySelector("#episodes");
+		select.innerHTML = "";
 		this.data.forEach(elem => {
 			let tag = document.createElement("option");
 			tag.setAttribute("value", elem.episodeId);
@@ -34,19 +35,13 @@ export default class UpdateComp extends HTMLElement {
 		this.elem("#title").value = this.current.title;
 		this.elem("#video").value = this.current.videoURL;
 		this.elem("#forum").value = this.current.forumURL;
-		this.elem("#aired").value = this.dateParser(this.current.aired);
+		const date = this.current.airedFrom;
+		this.elem("#aired").value = this.getYearNum(date.year) + "-" + this.getNum(date.month) + "-" + this.getNum(date.day);
 	}
 
 	appendHTML() {
 		this.root.innerHTML = html;
 		this.appendCSS();
-	}
-
-	dateParser(date) {
-		if(date.year == "9999")
-			return "0001-01-01";
-
-		return this.getYearNum(date.year) + "-" + this.getNum(date.month) + "-" + this.getNum(date.day);
 	}
 
 	getYearNum(num) {
@@ -87,7 +82,7 @@ export default class UpdateComp extends HTMLElement {
 			let elem = {};
 			elem.episodeId = this.current.episodeId
 			elem.title = this.elem("#title").value;
-			elem.aired = this.elem("#aired").value;
+			elem.airedFrom = this.elem("#aired").value;
 			elem.videoURL = this.elem("#video").value;
 			elem.forumURL = this.elem("#forum").value;
 			
@@ -101,7 +96,7 @@ export default class UpdateComp extends HTMLElement {
 				}
 			});
 
-			document.dispatchEvent(customEvent);
+			setTimeout(_ => document.dispatchEvent(customEvent), 500);
 		};
 
 		this.elem("#episodes").onchange = _ => {
