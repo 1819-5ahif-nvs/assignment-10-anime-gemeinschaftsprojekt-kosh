@@ -46,8 +46,15 @@ um den Swagger Editor direkt auf über den Wildfly hosten zu können, wurde ledi
 
 Außerdem werden durch diese dependency die Swagger dependencies automatisch eigebunden und man kann die Endpoints annotieren.
 
-Angestrebte Note: **2** <br>
+Angestrebte Note: **2**  
 Angestrebte Zeugnisnote: **2**
+
 ## Sheludchenko
 
 Soteria
+
+## Special Problems
+
+### API-Änderungen während der Entwicklung
+
+Die API der Seite, von der die Rohdaten kommen, hat sich während der Entwicklung geändert. Dabei wurde das Feld *aired* aus nicht mehr als JSON-Objekt mitgegeben sondern als Datum. Dabei fiel das Feld *to* weg.
