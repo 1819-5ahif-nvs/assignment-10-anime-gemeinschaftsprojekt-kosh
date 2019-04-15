@@ -19,6 +19,10 @@ Frontend mit WebComponents
 * Implementierung und Design des Frontend
 * Implementierung der Kommunikation mit dem Server
 * Einarbeitung der API-Changes
+* Aktivierung von CORS
+
+**Tipp für CORS**
+
 
 Angestrebte Note: **1**
 Angestrebte Zeugnisnote: **2**
