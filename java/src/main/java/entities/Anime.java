@@ -22,16 +22,13 @@ public class Anime implements Serializable {
     private String title;
     @JsonDeserialize(using= LocalDateAdapter.class)
     private LocalDate airedFrom;
-    @JsonDeserialize(using=LocalDateAdapter.class)
-    private LocalDate airedTo;
     private String videoURL;
     private String forumURL;
 
     //region constructors
-    public Anime(String title, LocalDate airedFrom, LocalDate airedTo, String videoURL, String forumURL) {
+    public Anime(String title, LocalDate airedFrom, String videoURL, String forumURL) {
         this.title = title;
         this.airedFrom = airedFrom;
-        this.airedTo = airedTo;
         this.videoURL = videoURL;
         this.forumURL = forumURL;
     }
@@ -63,14 +60,6 @@ public class Anime implements Serializable {
 
     public void setAiredFrom(LocalDate airedFrom) {
         this.airedFrom = airedFrom;
-    }
-
-    public LocalDate getAiredTo() {
-        return airedTo;
-    }
-
-    public void setAiredTo(LocalDate airedTo) {
-        this.airedTo = airedTo;
     }
 
     public String getVideoURL() {

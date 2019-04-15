@@ -77,7 +77,7 @@ public class InitBean {
         String dateTo = "";
         for (int i = 0; i < jsonArr.length(); i++) {
             jsonObj = jsonArr.getJSONObject(i);
-            animeList.add(new Anime(jsonObj.getString("title"), LocalDate.parse(jsonObj.optString("aired", "9999-01-01T").split("T")[0], formatter), LocalDate.parse("9999-01-01", formatter), jsonObj.getString("video_url"), jsonObj.getString("forum_url"))); //if date from or to is null, set default date
+            animeList.add(new Anime(jsonObj.getString("title"), LocalDate.parse(jsonObj.optString("aired", "9999-01-01T").split("T")[0], formatter), jsonObj.getString("video_url"), jsonObj.getString("forum_url"))); //if date from or to is null, set default date
         }
 
         return animeList;
