@@ -12,8 +12,8 @@
 > npm start  
 
 logins:
-admin/passme -> hat alle Rechte
-test/pass -> kann nur bearbeiten und anzeigen
+admin/passme -> hat alle Rechte  
+test/pass -> kann nur bearbeiten und anzeigen  
 
 Swagger-Dokumentation verfügbar unter <http://localhost:8080/anime/rs/apiee/index.html>
 
