@@ -89,7 +89,7 @@ Soteria
 * Implementierung der div. Rollen
 * Implementierung von Login-Endpoint
 
-Angestrebte Note: **4**
+Angestrebte Note: **4**  
 Angestrebte Zeugnisnote: **4**
 
 ## Special Problems
