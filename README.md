@@ -89,8 +89,7 @@ Soteria
 * Implementierung der div. Rollen
 * Implementierung von Login-Endpoint
 
-(Arbeit wurde teilweise auf dem Laptop von Tobias Kneidinger erledigt, da der Docker-Container nicht auf Windows Home gestartet werden könnte)
-
+Angestrebte Note: **4**
 Angestrebte Zeugnisnote: **4**
 
 ## Special Problems
@@ -98,3 +97,6 @@ Angestrebte Zeugnisnote: **4**
 ### API-Änderungen während der Entwicklung
 
 Die API der Seite, von der die Rohdaten kommen, hat sich während der Entwicklung geändert. Deswegen musste die Applikation noch einmal angepasst werden. Diese Änderungen wurden von Hauer und Kneidinger eingearbeitet.
+
+### Probleme mit Docker
+Aufgrund der Probleme mit Docker unter Windows (Container konnten nicht gestartet werden) mussten untereinander die Arbeitsgeräte getauscht werden und so hat Sheludchenko zum Teil auf dem Laptop von Kneidinger gearbeitet.
