@@ -42,8 +42,12 @@ export default class ReadComp extends HTMLElement {
 		};
 	}
 
+	get token() {
+		return this.getAttribute("token");
+	}
+
 	async getAllEpisodes() {
-		this.data = await (new FetchWorker()).readAll();
+		this.data = await (new FetchWorker(this.token)).readAll();
 
 		this.data.forEach(elem => {
 			this.root.querySelector("#readAll").appendChild(this.createTag(elem));

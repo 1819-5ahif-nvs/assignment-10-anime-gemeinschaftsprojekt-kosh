@@ -1,5 +1,6 @@
 export default class FetchWorker {
-	constructor() {
+	constructor(token) {
+		this.token = token;
 		this.baseurl = "http://localhost:8080/anime/rs/episode";
 	}
 
@@ -16,7 +17,12 @@ export default class FetchWorker {
 	}
 
 	async readAll() {
-		const resp = await fetch(this.baseurl);
+		console.log("Bearer " + this.token);
+		const resp = await fetch(this.baseurl, {
+			headers: {
+				Authorization: "Bearer " + this.token
+			}
+		});
 		return await resp.json();
 	}
 

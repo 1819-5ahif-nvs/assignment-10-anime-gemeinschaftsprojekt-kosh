@@ -46,7 +46,7 @@ export default class  LoginComp extends HTMLElement {
 				this.root.querySelector("#password").classList.add("error");
 			}
 			else {
-				elem.setAttribute("token", resp);
+				elem.setAttribute("token", resp.token);
 				this.replaceWith(elem);
 			}
 		}

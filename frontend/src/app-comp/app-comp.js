@@ -11,6 +11,7 @@ export default class AppComp extends HTMLElement {
 	connectedCallback() {
 		this.appendHTML();
 		this.addFunctionality();
+		this.fireCustomEvent("READ");
 	}
 
 	appendHTML() {
@@ -36,7 +37,7 @@ export default class AppComp extends HTMLElement {
 			bubbles: true,
 			detail: {
 				menu: item,
-				token: this.token()
+				token: this.token
 			}
 		});
 
