@@ -16,12 +16,8 @@ export default class DataComp extends HTMLElement {
 		return this.getAttribute("title");
 	}
 	
-	get airedfrom() {
-		return this.getAttribute("airedfrom");
-	}
-
-	get airedto() {
-		return this.getAttribute("airedto");
+	get aired() {
+		return this.getAttribute("aired");
 	}
 
 	get videourlShorted() {
@@ -53,8 +49,7 @@ export default class DataComp extends HTMLElement {
 		}
 
 		this.root.querySelector("#title").innerText = this.title;
-		this.root.querySelector("#airedfrom").innerText = this.airedfrom;
-		this.root.querySelector("#airedto").innerText = this.airedto;
+		this.root.querySelector("#aired").innerText = this.aired;
 		this.root.querySelector("#videourl").innerText = this.videourlShorted;
 		this.root.querySelector("#videourl").href = this.videourl;
 		this.root.querySelector("#forumurl").innerText = this.forumurlShorted;
