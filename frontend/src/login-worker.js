@@ -6,7 +6,8 @@ export default class LoginWorker {
 	}
 
 	async login(username, password) {
-		const resp = await fetch(this.baseurl, {
+		let resp = null;
+		resp = await fetch(this.baseurl, {
 			method: "POST",
 			headers: {
 				'Content-Type': 'application/json'
@@ -17,14 +18,10 @@ export default class LoginWorker {
 			})
 		});
 
-		console.log(JSON.stringify({
-			username: username,
-			password: password
-		}))
-
-		if(resp.status == 200)
+		if (resp.status == 200) {
 			return await resp.json();
-		
+		}
+
 		return null;
 	}
 }

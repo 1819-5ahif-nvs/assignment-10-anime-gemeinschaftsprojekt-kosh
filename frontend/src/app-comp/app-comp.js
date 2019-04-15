@@ -35,11 +35,16 @@ export default class AppComp extends HTMLElement {
 		const customEvent = new CustomEvent("router", {
 			bubbles: true,
 			detail: {
-				menu: item
+				menu: item,
+				token: this.token()
 			}
 		});
 
 		document.dispatchEvent(customEvent);
+	}
+
+	get token() {
+		return this.getAttribute("token");
 	}
 }
 

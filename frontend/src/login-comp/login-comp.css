@@ -18,6 +18,10 @@
 	width: 100%;
 }
 
+.error {
+	background: #FFBABA;
+}
+
 #inputfields {
 	display: grid;
 	grid-template-columns: 150px 150px;

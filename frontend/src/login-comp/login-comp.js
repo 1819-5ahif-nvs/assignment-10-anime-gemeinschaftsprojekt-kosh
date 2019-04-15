@@ -41,12 +41,13 @@ export default class  LoginComp extends HTMLElement {
 			const resp = await this.worker.login(this.username, this.password);
 			if(resp == null) {
 				this.root.querySelector("#username").value = "";
+				this.root.querySelector("#username").classList.add("error");
 				this.root.querySelector("#password").value = "";
+				this.root.querySelector("#password").classList.add("error");
 			}
 			else {
-				console.log(resp);
-				elem.setAttribute("token", "test");
-				//this.replaceWith(elem);
+				elem.setAttribute("token", resp);
+				this.replaceWith(elem);
 			}
 		}
 	}
