@@ -13,7 +13,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 @RolesAllowed({"admin", "user"})
-@Api(value="Anime")
+@Api(value="Episode")
 @Path("episode")
 public class AnimeEndpoint {
     @Inject
@@ -23,7 +23,7 @@ public class AnimeEndpoint {
     @RolesAllowed({"user", "admin"})
     @ApiOperation(value = "Get all Animes")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getCustomerItemsByDate() {
+    public Response getAllAnimes() {
         return Response.ok()
                 .status(200)
                 .entity(new GsonBuilder().create().toJson(animeFacade.getAllAnimes()))
