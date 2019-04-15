@@ -16,8 +16,8 @@ import javax.ws.rs.core.MediaType;
 
 @Path("login")
 public class LoginEndpoint {
-    
-    private UserRepository repo = new UserRepository();
+    @Inject
+    private UserRepository repo;
     @Inject
     private JWTStore jwtStore;
 

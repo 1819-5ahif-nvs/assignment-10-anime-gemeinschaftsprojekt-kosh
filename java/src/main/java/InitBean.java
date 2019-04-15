@@ -1,6 +1,7 @@
 import business.AnimeFacade;
-
+import business.UserRepository;
 import entities.Anime;
+import entities.User;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
@@ -12,29 +13,29 @@ import javax.annotation.PostConstruct;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
 import javax.inject.Inject;
-import javax.json.JsonObject;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.net.UnknownHostException;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 @Singleton
 @Startup
 public class InitBean {
     @Inject
     private AnimeFacade animeFacade;
+    @Inject
+    private UserRepository userRepository;
     private final String USER_AGENT = "Mozilla/5.0";
 
     @PostConstruct
     public void init() {
+        userRepository.save(new User("admin", "passme", "admin"));
+        userRepository.save(new User("test", "pass", "user"));
+
         List<Anime> list = new ArrayList<>();
         try {
             list = fetchAnimes("https://api.jikan.moe/v3/anime/1/episodes/1"); //url for REST Endpoint

@@ -2,23 +2,21 @@ package business;
 
 import entities.User;
 
-import javax.enterprise.context.ApplicationScoped;
-import java.util.LinkedList;
-import java.util.List;
+import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
+@Stateless
 public class UserRepository {
-    private List<User> users = new LinkedList<>();
 
-    public UserRepository() {
-        users.add(new User());
-        users.add(new User("Test", "pass"));
+    @PersistenceContext
+    private EntityManager em;
+
+    public void save(User user) {
+        em.merge(user);
     }
 
-    public User find(String username){
-        if(username.equals("Test"))
-            return users.get(1);
-        else
-            return users.get(0);
-
+    public User find(String username) {
+        return em.find(User.class, username);
     }
 }

@@ -35,7 +35,7 @@ public class JWTStore implements IdentityStore {
     public JWTCredential generateJWT(User user) {
         return new JWTCredential(Jwts.builder()
             .claim("name", user.getUsername())
-            .claim("scope", "user")
+            .claim("scope", user.getScope())
             .signWith(SignatureAlgorithm.HS256, privateKey)
             .compact());
     }
