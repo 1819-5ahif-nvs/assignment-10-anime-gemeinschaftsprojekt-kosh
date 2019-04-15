@@ -5,11 +5,11 @@
 
 ## Quickstart
 
-> docker-compose up
-> cd frontend
-> npm i
-> npm run build
-> npm start
+> docker-compose up  
+> cd frontend  
+> npm i  
+> npm run build  
+> npm start  
 
 logins:
 admin/passme -> hat alle Rechte
