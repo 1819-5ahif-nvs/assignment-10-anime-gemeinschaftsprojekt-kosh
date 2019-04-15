@@ -39,7 +39,7 @@ Frontend mit WebComponents
   </dependency>
 ```
 
-Angestrebte Note: **1**
+Angestrebte Note: **1**  
 Angestrebte Zeugnisnote: **2**
 
 ## Kneidinger
